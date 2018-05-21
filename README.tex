@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry} 
+\geometry{letterpaper}   
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts,bbm,mathrsfs,stmaryrd}
+\usepackage{url}
+
+%%% Theorems and references %%%
+\usepackage[amsmath,thmmarks]{ntheorem}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\theoremstyle{change}
+
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{example}[equation]{Example}
+
+
+\theorembodyfont{\upshape}
+\theoremsymbol{\ensuremath{\Diamond}}
+\newtheorem{eg}[equation]{Example}
+\newtheorem{remark}[equation]{Remark}
+
+\theoremstyle{nonumberplain}
+
+\theoremsymbol{\ensuremath{\Box}}
+\newtheorem{proof}{Proof}
+
+\qedsymbol{\ensuremath{\Box}}
+
+\creflabelformat{equation}{#2(#1)#3} 
+
+\crefname{equation}{equation}{equations}
+\crefname{eg}{example}{examples}
+\crefname{defn}{definition}{definitions}
+\crefname{prop}{proposition}{propositions}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{lemma}{lemma}{lemmas}
+\crefname{cor}{corollary}{corollaries}
+\crefname{remark}{remark}{remarks}
+\crefname{section}{Section}{Sections}
+\crefname{subsection}{Section}{Sections}
+
+\crefformat{equation}{#2equation~(#1)#3} 
+\crefformat{eg}{#2example~#1#3} 
+\crefformat{defn}{#2definition~#1#3} 
+\crefformat{prop}{#2proposition~#1#3} 
+\crefformat{thm}{#2Theorem~#1#3} 
+\crefformat{lemma}{#2lemma~#1#3} 
+\crefformat{cor}{#2corollary~#1#3} 
+\crefformat{remark}{#2remark~#1#3} 
+\crefformat{section}{#2Section~#1#3} 
+\crefformat{subsection}{#2Section~#1#3} 
+
+\Crefformat{equation}{#2Equation~(#1)#3} 
+\Crefformat{eg}{#2Example~#1#3} 
+\Crefformat{defn}{#2Definition~#1#3} 
+\Crefformat{prop}{#2Proposition~#1#3} 
+\Crefformat{thm}{#2Theorem~#1#3} 
+\Crefformat{lemma}{#2Lemma~#1#3} 
+\Crefformat{cor}{#2Corollary~#1#3} 
+\Crefformat{remark}{#2Remark~#1#3} 
+\Crefformat{section}{#2Section~#1#3} 
+\Crefformat{subsection}{#2Section~#1#3} 
+
+
+\numberwithin{equation}{section}
+
+
+%%% Tikz stuff %%%
+
+\usepackage{tikz}
+\tikzset{dot/.style={circle,draw,fill,inner sep=1pt}}
+\usepackage{braids}
+\usepackage{tqft}
+\usetikzlibrary{tqft}
+\usetikzlibrary{cd}
+\usetikzlibrary{arrows}
+\usepackage[]{youngtab}
+\usepackage{young}
+\newcommand*{\isoarrow}[1]{\arrow[#1,"\rotatebox{90}{\(\sim\)}"
+]}
+
+
+%%% Letters, Symbols, Words %%%
+
+\newcommand\Aa{{\cal A}}
+\newcommand\Oo{{\cal O}}
+\newcommand\Uu{{\cal U}}
+\newcommand\NN{{\mathbb N}}
+\newcommand\RR{{\mathbb R}}
+\newcommand\Ddd{\mathscr{D}}
+\renewcommand{\d}{{\,\rm d}}
+\newcommand\T{{\rm T}}
+
+\newcommand\mono{\hookrightarrow}
+\newcommand\sminus{\smallsetminus}
+\newcommand\st{{\textrm{ s.t.\ }}}
+\newcommand\ket[1]{\mid #1 \rangle}
+\newcommand\bra[1]{\langle #1 \mid}
+\newcommand\setof[1]{\{ #1 \}}
+\newcommand\lt{<}
+\newcommand\abs[1]{ \mid #1 \mid }
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\dVol}{dVol}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\fiber}{fiber}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\tr}{tr}
+\usepackage{slashed}
+
+\begin{document}
+
+Inspired upon \url{http://bair.berkeley.edu/blog/2018/05/17/delayed-impact/}
+
+There are K classes. For example, these might be $K$ different choices for races, sexual orientations, religions or combinations thereof. There are $P \leq K$ policies that are being applied. For example, these could be a bank decides to give you a credit limit of either none, something between $1000-2000$, $2000-3000$ etc.
+
+To test if there is some discrimination, we group the $K$ classes into $P$ by doing some set partition. This then gives a $P$ by $P$ confusion matrix. But the labels for the rows and columns are different so rather than calculate Matthews correlation coefficient directly, we permute over $S_P$ that tells which policy goes with which group of protected classes.
+
+\begin{definition}[MCC Multiclass]
+\url{https://en.wikipedia.org/wiki/Matthews_correlation_coefficient}
+\end{definition}
+
+The goal is to find the function from this set of $K$ to the set of $P$ so that the resulting multiclass MCC for the $P$ by $P$ confusion matrix is maximized.
+
+\end{document}
